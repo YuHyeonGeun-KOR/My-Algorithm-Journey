@@ -1,12 +1,14 @@
 import sys
-a =int(sys.stdin.readline())
 
-b = [] 
+num =int(sys.stdin.readline())
 
-for i in range(a):
-    b.append(int(sys.stdin.readline()))
+arr = [] 
 
-b.sort()
+for i in range(num):
+    arr.append(int(sys.stdin.readline()))
 
-for j in range(len(b)):
-    print(b[j])
+arr.sort()
+
+
+for j in range(len(arr)):
+    print(arr[j])
