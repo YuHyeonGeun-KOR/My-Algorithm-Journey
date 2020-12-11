@@ -1,3 +1,9 @@
+# 파라메트릭 서치
+#최적화 문제를 결정문제로 바꾸어 해결
+#원하는 조건을 만족하는 가장 알맞은 값을 찾는 문제
+#탐색범위 1~10억 -> 이진탐색트리
+#이진탐색 최대 31번 , N이 최대 100만 -> 최대 3000만번의 연산
+
 def binary_search(array, target, start, end):
     while start <= end:
         mid = (start + end) // 2
