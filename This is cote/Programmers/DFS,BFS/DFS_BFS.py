@@ -29,9 +29,11 @@ visited1 = [False]*(n+1)
 for i in range(0,m):
     a,b = map(int, input().split())
     graph[a].append(b)
+    graph[b].append(a)
 
-print(graph)
+for i in range(1,n+1):
+    graph[i].sort()
+
 dfs(graph,start,visited) 
 print('')
-print(graph)
 bfs(graph,start,visited1)   
