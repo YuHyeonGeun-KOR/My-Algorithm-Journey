@@ -20,7 +20,7 @@ for i in range(h):
                 queue.append((i,j,k))
 
 
-def dfs():
+def bfs():
     while queue:
         z,x,y = queue.popleft()
         for i in range(6):
@@ -34,7 +34,7 @@ def dfs():
             
             
             
-dfs()
+bfs()
 
 
             

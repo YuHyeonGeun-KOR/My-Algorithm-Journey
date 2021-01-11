@@ -14,7 +14,7 @@ for i in range(n):
         if Box[i][j] == 1:
             queue.append((i,j))
 
-def dfs(queue):
+def bfs(queue):
     while queue:
         x,y = queue.popleft()
         for i in range(4):
@@ -31,7 +31,7 @@ def dfs(queue):
                 queue.append((nx,ny))
           
     
-dfs(queue)
+bfs(queue)
 
 
 def solve(Box):
