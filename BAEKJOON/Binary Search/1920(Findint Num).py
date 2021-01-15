@@ -1,22 +1,28 @@
-def solution(citations):
-    answer = 0
-    result = []
-    citations.sort()
-    print(critations)
-    for i in range(citations[-1]):
-        h = 0
-        for j in citations:
-            if i <= j :
-                h += 1
-                if h == i:
-                    result.append(h)
-    
-    result.sort()
-    print(result)
-    answer = result[-1]
-    return answer
+import sys
+input = sys.stdin.readline
 
-critations = [4,1,2,7,8]
+N= int(input())
 
-print(solution(critations))
+A = list(map(int, input().split()))
 
+M = int(input())
+
+B = list(map(int, input().split()))
+
+A.sort()
+
+
+def bst(array , target, start , end):
+    while start <= end :
+        mid = (start + end) // 2
+        if target == array[mid]:
+            return 1
+        elif target < array[mid]:
+            end = mid -1
+        else :
+            start = mid + 1
+    return 0
+
+
+for i in B:
+    print(bst(A, i, 0, N-1))
