@@ -1,58 +1,69 @@
-import sys
-input = sys.stdin.readline
+from collections import deque
 
-tooth = [[] for i in range(0,4)]
-for i in range(0,4):
-    ns =input().rstrip()
-    for j in str(ns):
-        tooth[i].append(j)
-print(tooth)    
+tooth_1 = deque(map(int, input())) 
+tooth_2 = deque(map(int, input())) 
+tooth_3 = deque(map(int, input())) 
+tooth_4 = deque(map(int, input()))
 
 
-def rotate(tooth_n, r):
-    if r == -1:
-        tooth[tooth_n-1][0],tooth[tooth_n-1][1:7] = tooth[tooth_n-1][7],tooth[tooth_n-1][0:6]
-    elif r == 1:
-        tooth[tooth_n-1][7],tooth[tooth_n-1][0:6] = tooth[tooth_n-1][0],tooth[tooth_n-1][1:7]
 
 def other_rotate(tooth_n, r):
-    rotate = True
-    if tooth_n == 1 and tooth[0][2] != tooth[1][6]:
-        rotate(2, -1 *r )
-        if tooth[1][2] != tooth[2][6]:  
-            rotate(3,  r )
-        else :
-            rotate = False
-            
-        if tooth[2][2] != tooth[3][6]:  
-            rotate(4, -1 * r )
-    else :
-        return 
-
-
-    if tooth_n == 2 and tooth[1][6] != tooth[0][2]:
-        rotate(1, -1 *r )
-        if tooth[1][2] != tooth[2][6]:  
-            rotate(3, -1 * r )
-        if tooth[2][2] != tooth[3][6]:  
-            rotate(4, r )
         
-    if tooth_n == 3 and tooth[2][2] != tooth[3][6]:
-        rotate(4, -1 *r )
-        if tooth[2][6] != tooth[1][2]:  
-            rotate(2, -1 * r )
-        if tooth[2][2] != tooth[3][6]:  
-            rotate(4, r )
-        
-    if tooth_n == 1 and tooth[0][2] != tooth[1][6]:
-        rotate(2, -1 *r )
-        if tooth[1][2] != tooth[2][6]:  
-            rotate(3, -1 * r )
-        if tooth[2][2] != tooth[3][6]:  
-            rotate(4, -1 * r )
-        
+    if tooth_n == 1 :
+        if tooth_1[2] != tooth_2[6]:
+            if tooth_2[2] != tooth_3[6]:      
+                if tooth_3[2] != tooth_4[6]:  
+                    tooth_4.rotate(-r)
+                tooth_3.rotate(r)    
+            tooth_2.rotate(-r)  
+        tooth_1.rotate(r)    
 
 
-           
+    if tooth_n == 2 :
+        if tooth_2[6] != tooth_1[2]:
+            tooth_1.rotate(-r)
+        if tooth_2[2] != tooth_3[6]:  
+            if tooth_3[2] != tooth_4[6]:  
+                tooth_4.rotate(r)
+            tooth_3.rotate(-r)
+        tooth_2.rotate(r)   
 
-print(tooth)
+    if tooth_n == 3 :
+        if tooth_3[2] != tooth_4[6]:
+            tooth_4.rotate(-r)
+        if tooth_3[6] != tooth_2[2]:  
+            if tooth_2[6] != tooth_1[2]:  
+                tooth_1.rotate(r)
+            tooth_2.rotate(-r)
+        tooth_3.rotate(r)   
+    if tooth_n == 4 :
+        if tooth_4[6] != tooth_3[2]:
+            if tooth_2[2] != tooth_3[6]:  
+                if tooth_1[2] != tooth_2[6]:  
+                    tooth_1.rotate(-r)
+                tooth_2.rotate(r)    
+            tooth_3.rotate(-r)
+        tooth_4.rotate(r)   
+
+    return
+
+k = int(input())
+for i in range(0,k):
+    saw_num , clock = map(int,input().split())
+    other_rotate(saw_num,clock)           
+
+def solve ():
+    r_sum = 0
+    if tooth_1[0] == 1:
+        r_sum += 1
+    if tooth_2[0] == 1:
+        r_sum += 2
+    if tooth_3[0] == 1:
+        r_sum += 4
+    if tooth_4[0] == 1:
+        r_sum += 8
+    return r_sum
+
+print(solve())
+
+
