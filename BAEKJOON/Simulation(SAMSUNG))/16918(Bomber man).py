@@ -9,12 +9,7 @@ check = [[0]*c for o in range(r)]
 for i in range(0,r):
     board.append(list(input()))
 
-def show_print(board):            
-    for i in range(0,r):
-        board[i] = "".join(board[i])
-        print(board[i])
-
-def Bomb_check(board,check):
+def Bomb_check(board):
     m_check = [[0]*c for o in range(r)]
     for i in range(0,r):
         for j in range(0,c):
@@ -41,12 +36,12 @@ def Make_Board():
 
 for i in range(1,n+1):
     if i == 1:
-        check = Bomb_check(board,check)
+        check = Bomb_check(board)
     elif i % 2 == 0:
         board = Make_Board()
     else :
         board = Bomb_Bomb(check)        
-        check =Bomb_check(board,check)
+        check =Bomb_check(board)
 
 for i in range(r):
     board[i] = "".join(board[i])

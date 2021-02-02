@@ -36,6 +36,7 @@ def other_rotate(tooth_n, r):
                 tooth_1.rotate(r)
             tooth_2.rotate(-r)
         tooth_3.rotate(r)   
+        
     if tooth_n == 4 :
         if tooth_4[6] != tooth_3[2]:
             if tooth_2[2] != tooth_3[6]:  
