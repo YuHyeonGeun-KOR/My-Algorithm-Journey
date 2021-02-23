@@ -1,12 +1,18 @@
 n = int(input())
-
 k = int(input())
+sensor = list(map(int, input().split()))
+distance = []
+result = 0
+if k < n: 
+    sensor.sort()
+    for i in range(1, n):
+        distance.append(sensor[i] - sensor[i-1])
+    distance.sort(reverse=True)
 
-sen_position = list(map(int, input().split()))
-
-
-sen_position.sort()
-if ( sen_position[0] + sen_position[-1] ) % 2 ==1:
-    print(( sen_position[0] + sen_position[-1] -1)//2)
+    for i in range(k-1):
+        del distance[0]
+    
+    result = sum(distance)
+    print(result)
 else:
-    print( ( sen_position[0] + sen_position[-1] )//2)
+    print(result)
