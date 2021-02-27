@@ -1,0 +1,1 @@
+select O.Buyer_id, O.buy_date, L.book_name, L.price \n from library L, orderInfo O where O.book_id=L.book_id and L.book_name = 'Looking with Elice' and O.buy_date >= '2020-07-27' and O.buy_date <= '2020-07-31' order by O.buy_date
