@@ -1,3 +1,4 @@
+# pop위치 다시 한번 생각해보기
 def main():
     x = int(input())
     result ={}
