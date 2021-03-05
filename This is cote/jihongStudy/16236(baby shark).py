@@ -45,7 +45,7 @@ def bfs(x,y):
     queue = deque()
     queue.append((x,y))
     visited = [[False] * n for _ in range(n)]
-    visited[s1][s2] = True
+   
     tiktok = 0
     shark_size = 2
     sizeup_cnt = 0
