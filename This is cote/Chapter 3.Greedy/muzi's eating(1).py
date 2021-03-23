@@ -1,41 +1,33 @@
+from collections import deque
 def solution(food_times, k):
     count = 0
-
-    def counter_set(count):
-        if len(food_times)-1 < count:
-            return 0
-        else:
-            return count
-    
-    def food_eat(count):
-        if sum(food_times) == 0:
-                return -1
-        else :
-            while(True):
-                count = counter_set(count+1)
-                if food_times[count] != 0:
-                    return count 
-                
+    result = 0
+    food_queue = deque()
+    for i in range(len(food_times)):
+        food_queue.append([i+1,food_times[i]])
     
     
     for i in range(k):
-        if food_times[count] != 0 :
-            food_times[count] -= 1
-            
+        if len(food_queue) == 0:
+            result = -1 
+            return result    
+        index , food_num = food_queue.popleft()
+        food_num -= 1
+
+        if food_num != 0 :
+            food_queue.append([index,food_num])                                                       
         else:
-            count = food_eat(count)
-            if count == -1:
-                return(-1)
-            else:
-                food_times[count] -=1
-        count = counter_set(count+1)
-
-    count = food_eat(count)
-    answer = count+1
-    return answer
+            continue
+    index , food_num = food_queue.popleft()
+    return index
 
 
 
-food_times = [4,2,4]
-k = 8
-print(solution(food_times,k))
+food_times = [3,1,2]
+k = 5
+if solution(food_times,k) == -1:
+    print(-1)
+else:
+    print(solution(food_times,k))
+
+
