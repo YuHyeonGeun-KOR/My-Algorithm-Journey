@@ -30,5 +30,7 @@ for i in range(0,n):
         
 
 print(checker[-1])
+# 다시 풀어보기
+
     
 
