@@ -7,7 +7,7 @@ dy = [1,0,-1,0]
 
 for _ in range(k):
     apple_x,apple_y = map(int,input().split())
-    board[apple_y][apple_x] = 1
+    board[apple_x][apple_y] = 1
 
 l = int(input())
 
@@ -37,7 +37,7 @@ while True:
             del_x, del_y = position.pop(0)
             board[del_x][del_y] = 0
        
-       
+
         if board[nx][ny] == 1:
             board[nx][ny] = 's'
             position.append((nx,ny))
