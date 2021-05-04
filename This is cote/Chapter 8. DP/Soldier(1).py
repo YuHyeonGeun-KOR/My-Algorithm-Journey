@@ -20,7 +20,7 @@ for i in range(n):
             new_list[i+1] = num_list[j]
         else:
             
-
+...
         
 print(count)  
     
