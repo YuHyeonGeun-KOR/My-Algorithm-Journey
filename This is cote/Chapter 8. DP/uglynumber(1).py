@@ -17,4 +17,4 @@ for i in range(1,1001):
             break
         elif checker !=1:
             break
-print(ugly_num)
+print(ugly_num[n-1])
