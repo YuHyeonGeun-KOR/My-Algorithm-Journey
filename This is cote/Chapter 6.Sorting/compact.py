@@ -7,6 +7,7 @@ array = list(map(int, input().split()))
 set_array = set(array)
 sorted_array = sorted(set_array)
 new_array = {}
+
 for i in range(len(sorted_array)):
     new_array[sorted_array[i]] = i
 
