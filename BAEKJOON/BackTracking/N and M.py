@@ -1,15 +1,19 @@
-from itertools import permutations
-import sys
-
-input = sys.stdin.readline
-
-n,m = map(int, input().split())
-array = []
-for i in range(1,n+1):
-    array.append(i)
-array = permutations(array,m)
-for i in array:
-    for j in range(m):
-        print(i[j] , end=" ")
-    print("")
+N, M = map(int, input().split()) 
+visited = [0 for _ in range(N+1)] 
+arr = [] 
+def dfs(cnt): 
+    if cnt == M: 
+        print(arr) 
+        return 
+    for i in range(1,N+1): 
+        if visited[i] == 0: 
+            visited[i] = 1 
+            arr.append(i) 
+            
+            dfs(cnt+1) 
+            
+            visited[i] = 0 
+            arr.pop() 
+            print(visited,cnt)
+dfs(0)
 
