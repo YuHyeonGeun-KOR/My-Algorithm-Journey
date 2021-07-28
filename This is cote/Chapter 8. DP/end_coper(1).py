@@ -2,7 +2,7 @@ n = int(input())
 
 work = {}
 for i in range(n):
-    work[i+1] = list(map(int,input().split())) 1: [3 , 10]
+    work[i+1] = list(map(int,input().split())) 
 
 start_to_end_income = [0] * (10000)
 time = 0
