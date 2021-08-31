@@ -74,7 +74,6 @@ def solution(game_board, table):
     result_cnt = 0
     board_copy = copy.deepcopy(game_board)
     table_copy = copy.deepcopy(table)
-    
     for i in range(width):
         for j in range(width):
             if board_copy[i][j] == 0:
