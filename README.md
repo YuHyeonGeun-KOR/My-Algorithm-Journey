@@ -1,6 +1,6 @@
 ## WELCOME TO My Algorithm-Journey
 
-new start !!!!
+new start !!
 
 this is cote (0/3)
 
