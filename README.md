@@ -1,5 +1,7 @@
 ## WELCOME TO My Algorithm-Journey
 
+new start !!!
+
 this is cote (0/3)
 
 [Coding Test]
