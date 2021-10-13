@@ -5,64 +5,35 @@ input = sys.stdin.readline
 n = int(input())
 
 tree = {}
-for i in range(n):
-    root , left , right = input().rstrip().split()
-    tree[root] = [[], []]
-    tree[left] = [[], []]
-    tree[right] = [[], []]
-    if left != '.':
-        tree[root][0].append(left)
+for _ in range(n): 
+    root, left, right = input().rstrip().split() 
+    tree[root] = (left, right)
+
+
+def preorder(node): 
+    if node == '.': 
+        return 
+    print(node, end = "") 
+    preorder(tree[node][0]) 
+    preorder(tree[node][1]) 
+
+def inorder(node): 
+    if node == '.': 
+        return 
+    inorder(tree[node][0]) 
+    print(node, end = "") 
+    inorder(tree[node][1]) 
     
+def postorder(node): 
+    if node == '.':
+        return 
+    postorder(tree[node][0]) 
+    postorder(tree[node][1]) 
+    print(node, end = "")
 
-    if right != '.':
-        tree[root][1].append(right)
+preorder('A')
+print("") 
+inorder('A') 
+print("") 
+postorder('A')
 
-queue = deque(["A"])
-result_pre= ""
-result_mid = ""
-result_nex = ""
-
-while queue:
-    root = queue.popleft()
-    result_pre += root 
-
-    if tree[root][0] != []:
-        queue.appendleft(tree[root][0][0])
-
-    if tree[root][1] != []:
-        queue.append(tree[root][1][0])
-
-queue = deque(["A"])
-add_string = ''
-while queue:
-    root = queue.popleft()
-    add_string += root 
-    if tree[root][0] != []:
-        queue.appendleft(tree[root][0][0]) 
-    else:
-        result_mid += add_string[::-1]
-        add_string = ""
-
-    if tree[root][1] != []:
-        queue.append(tree[root][1][0])
-
-  
-queue = deque(["A"])
-add_string = ''
-while queue:
-    root = queue.popleft()
-    if tree[root][0] != [] and  tree[root][1] != []:
-        queue.appendleft(tree[root][0][0]) 
-        queue.append(tree[root][1][0])
-
-    else:
-        result_nex += root
-
-if tree['A'][1] != [] and tree['A'][1][0]  not in result_nex:
-    result_nex+=tree['A'][1][0]
-
-if 'A' not in result_nex :
-    result_nex += 'A'
-print(result_pre)
-print(result_mid)
-print(result_nex)
