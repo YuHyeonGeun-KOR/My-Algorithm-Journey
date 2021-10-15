@@ -7,7 +7,7 @@ deep , n = map(int , input().split())
 
 oven = list(map(int, input().split()))
 
-pizza = deque(list(map(int , input().split())))
+pizza = deque((map(int , input().split())))
 
 pizza_index = 0
 
