@@ -1,4 +1,3 @@
-from http.client import BAD_REQUEST
 import sys
 from collections import deque
 input = sys.stdin.readline
