@@ -7,57 +7,54 @@ def checker(i,j,board):
     checkList.append(board[i+1][j])
     checkList.append(board[i+1][j+1])
 
-    if len(set(checkList)) == 1:
-        return True
+    index_list = []
 
-def delete (i, j, board):
-    count = 0
-    queue = deque()
-    queue.append([i,j])
-    start = board[i][j]
-    visited = [[0] * len(board[0]) for _ in range(len(board))]
-    dx = [0,0,-1,1]
-    dy = [1,-1,0,0]
-    while queue:
-        now = queue.popleft()
-        print(now)
-        x , y = now[0], now[1]
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
 
-            if 0<= nx < len(board) and 0<= ny < len(board):
-                if visited[nx][ny] == 0 and board[nx][ny] == start:
-                    count +=1 
-                    visited[nx][ny] = 1
-                    board[nx][ny] = 0 
-                    queue.append([nx,ny])
-        
-
-        for i in range(1, len(board)):
-            for j in range(len(board[0])):
-                if board[i][j] == 0 and board[i-1][j] != 0 :
-                    board[i][j] = board[i-1][j]
-
-    return count , board
-
+    if len(set(checkList)) == 1: 
+        index_list = [[i,j] , [i,j+1] , [i+1,j] , [i+1,j+1]]
+        return index_list
+    else:
+        return False
                     
 
 
     
 def solution(m, n, board):
     answer = 0
-
-    for i in range(m-2):
-        for j in range(n-2):
-            if checker(i,j,board):
-                count , board = delete(i,j,board)
-                answer += count
-
+    
+    for i in range(m):
+        board[i] = list(board[i])
+    
+    while True :
+        d_tup = []
+        for i in range(m-1):
+            for j in range(n-1):
+                if board[i][j] != 0 :
+                    d_list = checker(i,j,board)
+                    if d_list:
+                        for d in d_list:
+                            if d not in d_tup:
+                                d_tup.append(d)
+                    
+                    
+    
+        if d_tup:
+            answer += len(d_tup)
+            for d in d_tup:
+                board[d[0]][d[1]] = 0 
+            
+            for l in range(1,len(board)):
+                for k in range(len(board[0])):
+                    if board[l][k] == 0 and board[l-1][k] != 0 :
+                        for h in range(l, 0, -1):
+                            board[h][k] = board[h-1][k]
+                        board[0][k] = 0 
+        else:
+            break
 
 
     return answer
 
-board = ["CCBDE", "AAADE", "AAABF", "CCBBF"]
+board = ["AA", "BB", "AA", "BB", "ZZ", "ZZ", "CC"] 
 
-print(solution(4,5, board))
+print(solution(7,2, board))
