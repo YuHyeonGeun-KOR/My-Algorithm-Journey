@@ -18,7 +18,7 @@ for i in range(n):
                 no_Flag = True
 
     if no_Flag == False and right == 0 :
-        answer.append("Yes")
+        answer.append("YES")
     else:
         answer.append("NO")
 
