@@ -28,7 +28,6 @@ class Solution_2007
 					break;
 				}
 			}
-			
 		}
 	}
 }
