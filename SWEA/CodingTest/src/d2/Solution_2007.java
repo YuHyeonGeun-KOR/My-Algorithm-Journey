@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 class Solution_2007
 {
+// Compelte
 	public static void main(String args[]) throws IOException
 	{
 		Scanner sc = new Scanner(System.in);
