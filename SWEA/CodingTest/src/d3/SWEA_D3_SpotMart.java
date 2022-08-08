@@ -19,8 +19,8 @@ public class SWEA_D3_SpotMart {
 				list[i] = sc.nextInt();
 			}
 			
-			int max = sc.nextInt();
-			int sum = sc.nextInt();
+			int max = 0;
+			int sum = 0;
 			
 			
 			for (int i = 0; i < list.length-1; i++) {
