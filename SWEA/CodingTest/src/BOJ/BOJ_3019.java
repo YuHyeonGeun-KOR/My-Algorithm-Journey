@@ -5,7 +5,15 @@ import java.io.*;
 
 public class BOJ_3019 {
 	static int result = 0;
+	//각 모양별로 들어갈 수 있는지 확인한다. 
+	
 	public static void bar(int C ,String[] board) {
+		/*
+		 * -   
+		 * -     
+		 * -     
+		 * -     - - - -
+		 */
 		result += C;
 		for(int i = 0; i <C-3; i++) {
 			int count = 0;
@@ -18,6 +26,10 @@ public class BOJ_3019 {
 		}
 	}
 	public static void square(int C ,String[] board) {
+		/* 
+		 * --     
+		 * --    
+		 */
 		for(int i = 0; i <C-1; i++) {
 			if(board[i].equals(board[i+1]))result +=1 ;
 		}
