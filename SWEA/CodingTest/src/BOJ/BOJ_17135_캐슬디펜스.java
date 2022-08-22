@@ -57,8 +57,8 @@ public class BOJ_17135_캐슬디펜스 {
 				int enemyX = Integer.MAX_VALUE;
 				int enemyY = Integer.MAX_VALUE;
 				int arY = archY.get(i);
-				for (int x = 0; x < n; x++) {
-					for (int y = m-1; y >=0; y--) {
+				for (int y = m-1; y >= 0; y--) {
+					for (int x = 0; x <n; x++) {
 						if(copyBoard[x][y] == 1) {
 							if(attackdis >=Math.abs(x-archX) + Math.abs(y - arY)) {
 								attackdis = Math.abs(x-archX) + Math.abs(y - arY);
