@@ -83,79 +83,36 @@ public class WESEWEA_2115_벌꿀채취 {
 		int hsum = 0;
 		int onesum = 0;
 		int twosum = 0;
-//		for (int h : honey1) {
-//			onesum += h;
-//		}
-//		for (int h : honey2) {
-//			twosum += h;
-//		}
-//		if (onesum <= C)
-//			oneisOkay = 1;
-//		if (twosum <= C)
-//			twoisOkay = 1;
-//		System.out.println(onesum);
-//		System.out.println(twosum);
-//		System.out.println(Arrays.toString(honey1));
-//		System.out.println(Arrays.toString(honey2));
-//		System.out.println(oneisOkay + " " + twoisOkay);
-//		if (oneisOkay == 1 && twoisOkay == 1) {
-//			int hind = honey.length - 1;
-//			for (int i = 0; i < M; i++) {
-//				hsum += honey[hind] * honey[hind];
-//				hind--;
-//			}
-//		} else {
-//			if (oneisOkay == 1 && twoisOkay == 0) {
-//				for (int i : honey1) {
-//					hsum += i * i;
-//				}
-//				int hsum2 = 0;
-//				h2 = 0;
-//				for (int i = 1; i < M; i++) {
-//					check(0, i, honey2, 2);
-//				}
-////				System.out.println(h2);
-//				hsum += h2;
-//			} else if(oneisOkay == 0 && twoisOkay == 1) {
-//				for (int i : honey2) {
-//					hsum += i * i;
-//				}
-//				int hsum1 = 0;
-//				h1 = 0;
-//				for (int i = 1; i < M; i++) {
-//					check(0, i, honey1, 1);
-//				}
-////				System.out.println(h1);
-//				hsum += h1;
-//			}else {
-				h1 = 0;
-				for (int i = 1; i <= M; i++) {
-					check(0, i, honey1, 1);
-				}
-				hsum += h1;
-				clist.clear();
-				h2 = 0;
-				for (int i = 1; i <= M; i++) {
-					check(0, i, honey2, 2);
-				}
-				hsum += h2;
-				clist.clear();
-		
+
+		h1 = 0;
+		for (int i = 1; i <= M; i++) {
+			check(0, i, honey1, 1);
+		}
+		hsum += h1;
+		clist.clear();
+		h2 = 0;
+		for (int i = 1; i <= M; i++) {
+			check(0, i, honey2, 2);
+		}
+		hsum += h2;
+		clist.clear();
+
 		clist.clear();
 		result = Math.max(result, hsum);
 
 	}
 
 	private static void check(int depth, int len, int[] h, int id) {
-		if (clist.size() == len ) {
+		if (clist.size() == len) {
 			int r = 0;
 			int sum = 0;
 			for (int i : clist) {
 				sum += i;
 				r += i * i;
 			}
-			if(sum > C) return;
-			
+			if (sum > C)
+				return;
+
 			if (id == 1)
 				h1 = Math.max(h1, r);
 			else

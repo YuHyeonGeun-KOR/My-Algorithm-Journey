@@ -18,7 +18,7 @@ public class SWEA_5656_벽돌깨기 {
 
 		for (int testcase = 1; testcase <= T; testcase++) {
 			String[] input = br.readLine().split(" ");
-
+			int min = Integer.MIN_VALUE;
 			N = Integer.parseInt(input[0]);
 			W = Integer.parseInt(input[1]);
 			H = Integer.parseInt(input[2]);
@@ -32,8 +32,11 @@ public class SWEA_5656_벽돌깨기 {
 				}
 			}
 
-//			com();
-			play();
+			com();
+			if(min == -1) //벽돌이 모두 깨진 경우
+				System.out.println("#"+testcase+" "+0);
+			else
+				System.out.println("#"+testcase+" "+min);
 		}
 
 	}
@@ -53,15 +56,14 @@ public class SWEA_5656_벽돌깨기 {
 	}
 
 	private static void play() {
-		// TODO Auto-generated method stub
 		int[][] cboard = copy();
 		int[][] visited = new int[H][W];
-		c_list.add(1);
 		for (int i = 0; i < c_list.size(); i++) {
 			int[] start = find(c_list.get(i), cboard);
 			if (start[0] == -1)
 				continue;
-			dq.add(new int[] {1,2,1});
+
+			dq.add(start);
 			
 			while (dq.size() > 0) {
 
@@ -88,13 +90,11 @@ public class SWEA_5656_벽돌깨기 {
 						} 
 					}
 				}
+
 			}
 			
-			c_list.add(1);
-			for (int[] j : cboard) {
-				System.out.println(Arrays.toString(j));
-			}
-			System.out.println();
+			
+			
 			
 		}
 	}
@@ -113,5 +113,46 @@ public class SWEA_5656_벽돌깨기 {
 			c[i] = Arrays.copyOf(board[i], W);
 		}
 		return c;
+	}
+	static void move(int[][] arr) {
+		for(int j=0; j<W; j++) {
+			for(int i=H-1; i>0; i--) {	
+				if(arr[i][j] == 0) {
+					int k = i-1;
+					while(k >= 0) {
+						if(arr[k][j] != 0) { 
+							arr[i][j] = arr[k][j]; 
+							arr[k][j] = 0;
+							break;
+						}
+					}
+					if(k == -1) break; 
+				}
+			}
+		}
+	}
+	static void crush(int x, int y, int[][] arr) {
+		dq = new ArrayDeque<>();
+		dq.add(new int[] {x,y,arr[x][y]});
+		arr[x][y] = 0;
+		
+		while(!dq.isEmpty()) {
+			int[] now = dq.remove();
+			for(int i=0; i<4; i++) {
+				int nx = now[0];
+				int ny = now[1];
+				int num = now[3];
+				for(int j=0; j<num-1; j++) {
+					nx += dx[i];
+					ny += dy[i];
+					if(nx < 0 || nx >= H || ny < 0 || ny >= W) break;
+					if(arr[nx][ny] == 0) continue;					
+					if(arr[nx][ny] > 1)
+						dq.add(new int[] {nx,ny,arr[nx][ny]});
+					arr[nx][ny] = 0; 
+				}
+	
+			}
+		}
 	}
 }
