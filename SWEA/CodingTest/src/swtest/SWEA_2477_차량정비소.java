@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package swtest;
 
 import java.io.*;
@@ -138,4 +139,11 @@ public class SWEA_2477_차량정비소 {
 
 	}
 
+=======
+
+public class SWEA_2477_차량정비소 {
+	public static void main(String[] args) {
+		
+	}
+>>>>>>> b4ef568bb018c519c3d4f2c10744a9ce9dddf516
 }
