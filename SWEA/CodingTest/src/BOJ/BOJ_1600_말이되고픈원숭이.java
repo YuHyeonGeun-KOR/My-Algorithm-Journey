@@ -66,11 +66,12 @@ public class BOJ_1600_말이되고픈원숭이 {
 				result = Math.min(result, time);
 			}
 			
+			
 			for (int i = 0; i < 4; i++) {
 				int nx = x + dx[i];
 				int ny = y + dy[i];
 				
-				if(nx>=0 && nx < H && ny>=0 && ny < H) {
+				if(nx>=0 && nx < H && ny>=0 && ny < W) {
 					if(board[nx][ny] != 1 && visited[k][nx][ny] == 0) {
 						visited[k][nx][ny] = 1;
 						Monkey temp = new Monkey(nx,ny);
@@ -86,7 +87,7 @@ public class BOJ_1600_말이되고픈원숭이 {
 					int nx = x + horseMovingDx[i];
 					int ny = y + horseMovingDy[i];
 					
-					if(nx >= 0 && nx < H && ny >= 0 && ny < H) {
+					if(nx >= 0 && nx < H && ny >= 0 && ny < W) {
 						if(board[nx][ny] != 1 && visited[k+1][nx][ny] == 0) {
 							visited[k+1][nx][ny] = 1;
 							Monkey temp = new Monkey(nx, ny);
